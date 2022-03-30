@@ -1,0 +1,14 @@
+SELECT * FROM customer where C_id = '1234'
+DELETE FROM customer WHERE customer.C_id = '1234'
+INSERT INTO customer (C_id, name, phone_no) values ('1234', 'Will', '1436473423')
+UPDATE customer SET customer.name = 'Bill', customer.phone_no = '2035923058' WHERE customer.C_id = '1234'
+SELECT * FROM customer WHERE customer.name IN ('Dale', 'Charlie', 'Leo')
+SELECT * FROM customer WHERE customer.name NOT IN ('Dale', 'Charlie', 'Leo')
+SELECT * FROM package WHERE EXISTS (SELECT name FROM customer WHERE customer.C_id = package.sender_id AND package.weight < 20)
+SELECT * FROM package WHERE NOT EXISTS (SELECT name FROM customer WHERE customer.C_id = package.sender_id AND package.weight < 20)
+SELECT COUNT('C_id') AS NumberOfCustomer FROM customer
+SELECT SUM(package.weight) FROM package WHERE package.receiver_id = '354750'
+SELECT MAX(package.weight) FROM package WHERE package.receiver_id = '354750'
+SELECT MIN(package.weight) FROM package WHERE package.receiver_id = '354750'
+SELECT AVG(package.weight) FROM package WHERE package.receiver_id = '354750'
+SELECT COUNT(package.address) As address_num, package.address FROM package GROUP BY address HAVING COUNT(package.address) >= 0
